@@ -27,5 +27,18 @@
         </div>
     </div>
 
+    <div th:fragment="display-jobListings">
+        <h3 style="display: inline"> Result(s) Found:
+            <h3 style="display: inline" th:text="${jobs.size()}"></h3>
+        </h3>
+
+        <table class="job-listing" th:each="job : ${jobs}">
+            <tr th:each="hashMap : ${job}">
+                <td th:text="${#strings.capitalizeWords(hashMap.key)}"></td>
+                <td th:for="${hashMap.key}" th:text="${hashMap.value}"></td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 </html>
